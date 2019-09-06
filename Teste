@@ -1,0 +1,15 @@
+--Código por Patrick - 06/09/19
+INSERT INTO objeto (objetonome, objetolink, objetodescricao, objetoexterno, objetoiconeon, objetoicone) 
+VALUES ('Benefício Fiscal', 'wwimpostobf.aspx', 'Benefício Fiscal', '0', '0', '0')
+
+
+DECLARE @objetoid INT = (SELECT MAX(objetoid) FROM objeto) 
+--SELECT @objetoid
+
+INSERT INTO dbo.ObjetoGrupoNeg (objetoid, gruponegid) VALUES (@objetoid, 1) 
+
+
+INSERT INTO navegacao (GrupoNegId, NavegacaoNome, NavegacaoApresentacao, navegacaopaiid, navegacaoordem, ModuloId, ObjetoId, navegacaotarget, 
+NavegacaoDinamico, NavegacaoExpandido, NavegacaoUsuIncId, NavegacaoDtInc, NavegacaoUsuAltId, NavegacaoDtAlt, NavegacaoLink, NavegacaoLinkTarget) 
+VALUES (1,'Benefício Fiscal', 'Benefício Fiscal', 211, 50, 'Suprimentos', @objetoid, '', 0, 0,
+0, 1753-01-01, 1, 1753-01-01, '', '')
